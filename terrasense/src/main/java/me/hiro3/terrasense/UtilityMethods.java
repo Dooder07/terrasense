@@ -6,9 +6,9 @@ import org.apache.commons.lang.reflect.FieldUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -23,7 +23,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
-import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntityLiving;
+import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntity;
 import net.minecraft.network.syncher.DataWatcher;
 import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.Entity;
@@ -109,14 +109,14 @@ public class UtilityMethods {
 		}
 
         PlayerConnection connection = ((CraftPlayer) p).getHandle().b;
-        EntityMagmaCube cube = new EntityMagmaCube(EntityTypes.X, ((CraftWorld) loc.getWorld()).getHandle());
+        EntityMagmaCube cube = new EntityMagmaCube(EntityTypes.aa, ((CraftWorld) loc.getWorld()).getHandle());
         cube.a(loc.getX(), loc.getY(), loc.getZ(), 0, 0);
         cube.d(true);
         cube.m(true);
         cube.b(6, true); //Glow
         cube.b(5, true); //Invisibility
 
-        PacketPlayOutSpawnEntityLiving spawnPacket = new PacketPlayOutSpawnEntityLiving(cube);
+        PacketPlayOutSpawnEntity spawnPacket = new PacketPlayOutSpawnEntity(cube);
         PacketPlayOutEntityMetadata entityMetadata = new PacketPlayOutEntityMetadata(cube.ae(),cube.ai(),false);
         connection.a(spawnPacket);
         connection.a(entityMetadata);
