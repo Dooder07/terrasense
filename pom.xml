@@ -6,7 +6,7 @@
 
     <groupId>me.hiro3.terrasense</groupId>
     <artifactId>terrasense</artifactId>
-    <version>5.0</version>
+    <version>4.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
