@@ -234,7 +234,7 @@ public class UtilityMethods {
     }
 
     public static String getVersion() {
-        return "5.0";
+        return "4.0";
     }
 
 }
